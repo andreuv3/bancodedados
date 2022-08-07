@@ -1,0 +1,49 @@
+paciente
+---------------
+cpf CHAR(11) PK
+rg CHAR(10)
+nome VARCHAR(50)
+sexo char(1)
+endereco VARCHAR(75)
+bairro VARCHAR(50)
+cidade VARCHAR(50)
+uf CHAR(2)
+cep CHR(8)
+telefone VARCHAR(15)
+nome_mae VARCHAR(50)
+nome_pai VARCHAR(50) NULL
+profissao VARCHAR(50)
+
+medico
+---------------
+cpf CHAR(11) PK
+rg CHAR(10)
+crm CHAR(8)
+nome VARCHAR(50)
+sexo char(1)
+endereco VARCHAR(75)
+bairro VARCHAR(50)
+cidade VARCHAR(50)
+uf CHAR(2)
+cep CHR(8)
+telefone VARCHAR(15)
+
+especialidade
+---------------
+codigo INT PK
+nome VARCHAR(255)
+
+especializacao
+---------------
+cpf_medico CHAR(11) PK FK >- medico.cpf
+codigo_especialidade INT PK FK >- especialidade.codigo 
+rqe CHAR(8)
+
+consulta
+---------------
+cpf_medico CHAR(11) PK FK >- medico.cpf
+cpf_paciente CHAR(11) PK FK >- paciente.cpf
+data date PK
+hora_inicio time PK
+hora_fim time
+observacoes TEXT NULL
